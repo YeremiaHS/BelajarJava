@@ -13,11 +13,11 @@ public class Person {
     }
 
     public void setNamaBelakang(String lName) {
-        namaDepan = lName;
+        namaBelakang = lName;
     }
 
     public String getFullName() {
-        return namaDepan + " " +namaBelakang;
+        return namaDepan + " " + namaBelakang;
     }
 
     public void setDomisili(String Domisili) {
