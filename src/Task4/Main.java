@@ -2,6 +2,13 @@ package Task4;
 
 import java.util.Scanner;
 
+import Task4.BangunDatar.Lingkaran;
+import Task4.BangunDatar.Persegi;
+import Task4.BangunDatar.PersegiPanjang;
+import Task4.BangunRuang.Balok;
+import Task4.BangunRuang.Kubus;
+import Task4.BangunRuang.Tabung;
+
 public class Main {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
@@ -13,7 +20,7 @@ public class Main {
         System.out.println("4. Kubus");
         System.out.println("5. Balok");
         System.out.println("6. Tabung");
-        System.out.println("=================================");
+        System.out.println("===================================");
         System.out.println("Masukan pilihanmu: ");
         int select = Integer.valueOf(scanner.nextLine());
 
@@ -24,6 +31,8 @@ public class Main {
 
             Persegi persegi = new Persegi(sisi);
             persegi.menggambarBangun();
+            persegi.karakteristikBangun();
+            System.out.println("================");
             System.out.println("Sisi: " + persegi.getSisi());
             System.out.println("Keliling: " + persegi.getKeliling());
             System.out.println("Luas: " + persegi.getLuas());
@@ -35,6 +44,8 @@ public class Main {
 
             Lingkaran lingkaran = new Lingkaran(jari);
             lingkaran.menggambarBangun();
+            lingkaran.karakteristikBangun();
+            System.out.println("================");
             System.out.println("Jari-jari: " + lingkaran.getJari());
             System.out.println("Keliling: " + lingkaran.getKeliling());
             System.out.println("Luas: " + lingkaran.getLuas());
@@ -48,6 +59,8 @@ public class Main {
 
             PersegiPanjang perPanjang = new PersegiPanjang(panjang, lebar);
             perPanjang.menggambarBangun();
+            perPanjang.karakteristikBangun();
+            System.out.println("================");
             System.out.println("Panjang: " + perPanjang.getPanjang());
             System.out.println("Lebar: " + perPanjang.getLebar());
             System.out.println("Keliling: " + perPanjang.getKeliling());

@@ -1,4 +1,4 @@
-package Task4;
+package Task4.BangunRuang;
 
 public interface BangunRuang {
     Double getVolume();

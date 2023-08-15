@@ -1,7 +1,9 @@
-package Task4;
+package Task4.BangunDatar;
 
 public interface BangunDatar {
     void menggambarBangun();
+
+    void karakteristikBangun();
 
     Double getKeliling();
 

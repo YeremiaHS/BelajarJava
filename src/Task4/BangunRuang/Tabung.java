@@ -1,9 +1,11 @@
-package Task4;
+package Task4.BangunRuang;
 
-public class Balok extends PersegiPanjang implements BangunRuang {
+import Task4.BangunDatar.Lingkaran;
 
-    public Balok(Double panjang, Double lebar, Double tinggi) {
-        super(panjang, lebar);
+public class Tabung extends Lingkaran implements BangunRuang{
+
+    public Tabung(Double jari, Double tinggi) {
+        super(jari);
         this.tinggi = tinggi;
         //TODO Auto-generated constructor stub
     }
@@ -11,14 +13,14 @@ public class Balok extends PersegiPanjang implements BangunRuang {
     private Double tinggi;
 
     public void setTinggi(Double tinggi){
-        if(tinggi < 0) {
+        if(tinggi < 0){
             throw new ArithmeticException("Please input a valid number");
         } else {
             this.tinggi = tinggi;
         }
     }
 
-    public Double getTinggi(){
+    public double getTinggi(){
         return tinggi;
     }
 

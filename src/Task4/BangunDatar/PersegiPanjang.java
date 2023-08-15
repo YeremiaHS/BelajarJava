@@ -1,4 +1,4 @@
-package Task4;
+package Task4.BangunDatar;
 
 public class PersegiPanjang implements BangunDatar{
 
@@ -63,6 +63,13 @@ public class PersegiPanjang implements BangunDatar{
     @Override
     public Double getLuas() {
         return Double.valueOf(this.panjang * this.lebar);
+    }
+
+    @Override
+    public void karakteristikBangun() {
+        System.out.println("=== Karakteristik ===");
+        System.out.println("1. Memiliki 4 sudut siku-siku yang sama besar");
+        System.out.println("2. Memiliki 4 sisi dimana 2 sisi berhadapan sama panjang");
     }
     
 }

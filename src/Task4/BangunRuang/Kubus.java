@@ -1,4 +1,6 @@
-package Task4;
+package Task4.BangunRuang;
+
+import Task4.BangunDatar.Persegi;
 
 public class Kubus extends Persegi implements BangunRuang{
 
