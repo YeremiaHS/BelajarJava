@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Transaction {
     
-    Person person = new Person();
-    Book book = new Book();
+    //Person person = new Person();
+    //Book book = new Book();
 
     LocalDate dateNow = LocalDate.now();
     private String dateBorrow = dateNow.toString();
     //private String dateReturn = dateNow.toString();
-    private String borrower = person.getUsername();
-    private String bookBorrowed = book.getJudul(); 
+    private String borrower;
+    private String bookBorrowed; 
 
 
     public Transaction(){
@@ -34,7 +34,7 @@ public class Transaction {
     //     this.dateNow = dateNow;
     // }
 
-    public Transaction(Integer idBorrower, Integer idBook) {
+    public Transaction(String idBorrower, String idBook) {
     }
 
     public String getDateBorrow() {
@@ -71,7 +71,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction [dateBorrow=" + dateBorrow + ", borrower=" + borrower + ", bookBorrowed=" + bookBorrowed
+        return "Transaction [date borrow=" + dateBorrow + ", borrower=" + borrower + ", book borrowed=" + bookBorrowed
                 + "]";
     }
     

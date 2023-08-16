@@ -146,10 +146,10 @@ public class Main {
 
                         System.out.println(" ");
                         System.out.println("=== RENT BOOK ===");
-                        System.out.println("Input borrower ID: ");
-                        Integer idBorrower = Integer.valueOf(scanner.nextLine());
-                        System.out.println("Input Book ID: ");
-                        Integer idBook = Integer.valueOf(scanner.nextLine());
+                        System.out.println("Input borrower: ");
+                        String idBorrower = scanner.nextLine();
+                        System.out.println("Input Book: ");
+                        String idBook = scanner.nextLine();
                         
                         Transaction transaction = new Transaction(idBorrower, idBook);
                         transactionService.createBorrow(transaction);
