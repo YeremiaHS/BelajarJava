@@ -7,14 +7,12 @@ import Library.dao.TransactionDao;
 import Library.models.Transaction;
 
 public class TransactionServiceImpl implements TransactionService{
-
     TransactionDao transactionDao;
 
     public TransactionServiceImpl(TransactionDao transactionDao) {
         this.transactionDao = transactionDao;
     }
 
-    
     @Override
     public void createBorrow(Transaction transaction) {
         if (transaction.getBorrower() ==  " ") {

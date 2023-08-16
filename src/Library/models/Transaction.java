@@ -14,8 +14,9 @@ public class Transaction {
     private String bookBorrowed; 
 
 
-    public Transaction(){
-
+    public Transaction(String borrower, String bookBorrowed){
+        this.borrower = borrower;
+        this.bookBorrowed = bookBorrowed;
     }
 
     public Transaction(String dateBorrow, String borrower, String bookBorrowed){
@@ -33,9 +34,6 @@ public class Transaction {
     // public void setDateNow(LocalDate dateNow) {
     //     this.dateNow = dateNow;
     // }
-
-    public Transaction(String idBorrower, String idBook) {
-    }
 
     public String getDateBorrow() {
         return dateBorrow;

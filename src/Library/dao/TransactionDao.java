@@ -22,7 +22,7 @@ public class TransactionDao implements BaseDao<Transaction, Integer> {
 
     @Override
     public Transaction findById(Integer id) {
-        return  this.transaction.get(id - 1);
+        return this.transaction.get(id - 1);
     }
 
     @Override

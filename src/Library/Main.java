@@ -147,11 +147,11 @@ public class Main {
                         System.out.println(" ");
                         System.out.println("=== RENT BOOK ===");
                         System.out.println("Input borrower: ");
-                        String idBorrower = scanner.nextLine();
+                        String borrower = scanner.nextLine();
                         System.out.println("Input Book: ");
-                        String idBook = scanner.nextLine();
+                        String bookBorrowed = scanner.nextLine();
                         
-                        Transaction transaction = new Transaction(idBorrower, idBook);
+                        Transaction transaction = new Transaction(borrower, bookBorrowed);
                         transactionService.createBorrow(transaction);
 
                         System.out.println(" ");
