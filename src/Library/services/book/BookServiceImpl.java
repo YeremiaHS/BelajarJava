@@ -2,7 +2,7 @@ package Library.services.book;
 
 import java.util.List;
 
-import Library.Exception.EmptyRequestException;
+import Library.Exception.BadRequestException;
 import Library.dao.BookDao;
 import Library.models.Book;
 
@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
        //validation
        if (buku.getJudul() == " ") {
             //throw exception
-            throw new EmptyRequestException("Title cannot be empty");
+            throw new BadRequestException("Title cannot be empty");
        } else {
         bookDao.save(buku);
         System.out.println("Book added");
@@ -32,6 +32,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(Integer id) {
+        if (id <=0) {
+            throw new BadRequestException("Input valid id");
+        }
         return bookDao.findById(id);
     }
 

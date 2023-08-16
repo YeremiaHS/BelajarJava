@@ -9,7 +9,7 @@ public class Transaction {
 
     LocalDate dateNow = LocalDate.now();
     private String dateBorrow = dateNow.toString();
-    //private String dateReturn = dateNow.toString();
+    private String dateReturn = dateNow.toString();
     private String borrower;
     private String bookBorrowed; 
 
@@ -26,6 +26,9 @@ public class Transaction {
         this.bookBorrowed = bookBorrowed;
     }
     
+    // public Transaction(String pengembalian){
+    //     this.dateReturn = dateReturn;
+    // }
 
     // public LocalDate getDateNow() {
     //     return dateNow;
@@ -43,13 +46,13 @@ public class Transaction {
         this.dateBorrow = dateBorrow;
     }
 
-    // public String getDateReturn() {
-    //     return dateReturn;
-    // }
+    public String getDateReturn() {
+        return dateReturn;
+    }
 
-    // public void setDateReturn(String dateReturn) {
-    //     this.dateReturn = dateReturn;
-    // }
+    public void setDateReturn(String dateReturn) {
+        this.dateReturn = dateReturn;
+    }
 
     public String getBorrower() {
         return borrower;
@@ -69,7 +72,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction [date borrow=" + dateBorrow + ", borrower=" + borrower + ", book borrowed=" + bookBorrowed
+        return "Transaction [date borrow=" + dateBorrow + ", borrower= " + borrower + ", book borrowed= " + bookBorrowed
                 + "]";
     }
     

@@ -2,7 +2,7 @@ package Library.services.person;
 
 import java.util.List;
 
-import Library.Exception.EmptyRequestException;
+import Library.Exception.BadRequestException;
 import Library.dao.PersonDao;
 import Library.models.Person;
 
@@ -18,7 +18,7 @@ public class PersonServiceImpl implements PersonService {
         //validation
         if (person.getUsername() == " ") {
             //exception
-            throw new EmptyRequestException("Username cannot be empty");
+            throw new BadRequestException("Username cannot be empty");
         } else {
             personDao.save(person);
             System.out.println("User added");
@@ -32,6 +32,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getPersonById(Integer id) {
+        if (id <=0) {
+            throw new BadRequestException("Input valid id");
+        }
         return personDao.findById(id);
     }
     

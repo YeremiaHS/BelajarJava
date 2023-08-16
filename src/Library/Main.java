@@ -23,7 +23,7 @@ public class Main {
 
     static BookService bookService = new BookServiceImpl(bookDao);
     static PersonService personService = new PersonServiceImpl(personDao);
-    static TransactionService transactionService = new TransactionServiceImpl(transactionDao);
+    static TransactionService transactionService = new TransactionServiceImpl(transactionDao, bookDao, personDao);
 
     private static void mainMenu(){
         System.out.println("""
@@ -146,19 +146,42 @@ public class Main {
 
                         System.out.println(" ");
                         System.out.println("=== RENT BOOK ===");
-                        System.out.println("Input borrower: ");
-                        String borrower = scanner.nextLine();
-                        System.out.println("Input Book: ");
-                        String bookBorrowed = scanner.nextLine();
+                        System.out.println("Input ID borrower: ");
+                        Integer borrower = Integer.valueOf(scanner.nextLine());
+                        System.out.println("Input ID Book: ");
+                        Integer bookBorrowed = Integer.valueOf(scanner.nextLine());
                         
-                        Transaction transaction = new Transaction(borrower, bookBorrowed);
-                        transactionService.createBorrow(transaction);
+                        //Transaction transaction = new Transaction(idBorrower, idBookBorrowed);
+                        transactionService.createBorrow(borrower, bookBorrowed);
 
                         System.out.println(" ");
                         System.out.println("=== LIST OF TRANSACTION ===");
                         List<Transaction> resultBorrow = transactionService.getAllTransactions();
                         for (int i = 0; i < resultBorrow.size(); i++){
                             System.out.println((i + 1) + ". " + resultBorrow.get(i));
+                        }
+                        break;
+
+                    case 6:
+                        System.out.println(" ");
+                        System.out.println("=== LIST OF TRANSACTION ===");
+                        List<Transaction> resultReturn = transactionService.getAllTransactions();
+                        for (int i = 0; i < resultReturn.size(); i++){
+                            System.out.println((i + 1) + ". " + resultReturn.get(i));
+                        }
+
+                        System.out.println(" ");
+                        System.out.println("=== RETURN BOOK ===");
+                        System.out.println("Input borrow ID: ");
+                        Integer kembalikan = Integer.valueOf(scanner.nextLine());
+
+                        transactionService.createReturn(kembalikan);
+
+                        System.out.println(" ");
+                        System.out.println("=== LIST OF TRANSACTION ===");
+                        List<Transaction> resultReturn2 = transactionService.getAllTransactions();
+                        for (int i = 0; i < resultReturn2.size(); i++){
+                            System.out.println((i + 1) + ". " + resultReturn2.get(i));
                         }
                         break;
 
