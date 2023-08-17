@@ -41,7 +41,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [judul= " + judul + ", penerbit= " + penerbit + ", pengarang= " + pengarang + "]";
+        return "Book [Tittle= " + judul + "| Publisher= " + penerbit + "| Author= " + pengarang + "]";
     }
 
     

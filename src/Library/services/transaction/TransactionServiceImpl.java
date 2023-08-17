@@ -1,6 +1,7 @@
 package Library.services.transaction;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import Library.Exception.BadRequestException;
@@ -49,9 +50,11 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
         if (kembali <=0) {
             throw new BadRequestException("Input valid id");
         }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMM uuuu HH:mm");
         LocalDateTime dateNow = LocalDateTime.now();
+        String dateReturn = dateNow.format(formatter);
         Transaction dataTransaction = transactionDao.findById(kembali);
-        dataTransaction.setDateReturn(dateNow.toString());
+        dataTransaction.setDateReturn(dateReturn.toString());
         transactionDao.update(kembali, dataTransaction);
         System.out.println("Return success!");
     }

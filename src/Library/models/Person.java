@@ -31,7 +31,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person [username= " + username + ", email= " + email + "]";
+        return "Person [Username= " + username + "| Email= " + email + "]";
     }
     
 }

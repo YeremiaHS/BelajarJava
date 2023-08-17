@@ -2,15 +2,18 @@ package Library.models;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
     
     //Person person = new Person();
     //Book book = new Book();
 
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMM uuuu HH:mm");
     LocalDateTime dateNow = LocalDateTime.now();
-    private String dateBorrow = dateNow.toString();
-    private String dateReturn = dateNow.toString();
+    //String dateFormat = dateNow.format(formatter);
+    private String dateBorrow = dateNow.format(formatter).toString();
+    private String dateReturn = dateNow.format(formatter).toString();
     private String borrower;
     private String bookBorrowed; 
 
@@ -73,8 +76,8 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction [dateBorrow=" + dateBorrow + ", dateReturn=" + dateReturn + ", borrower=" + borrower
-                + ", bookBorrowed=" + bookBorrowed + "]";
+        return "Transaction [Date Borrow= " + dateBorrow + "| Date Return=" + dateReturn + "| Book Borrowed= " + borrower
+                + "| Borrower= " + bookBorrowed + "]";
     }
     
     
