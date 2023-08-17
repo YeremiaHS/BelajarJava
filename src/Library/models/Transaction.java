@@ -1,13 +1,14 @@
 package Library.models;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 public class Transaction {
     
     //Person person = new Person();
     //Book book = new Book();
 
-    LocalDate dateNow = LocalDate.now();
+    LocalDateTime dateNow = LocalDateTime.now();
     private String dateBorrow = dateNow.toString();
     private String dateReturn = dateNow.toString();
     private String borrower;
@@ -72,8 +73,8 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction [date borrow=" + dateBorrow + ", borrower= " + borrower + ", book borrowed= " + bookBorrowed
-                + "]";
+        return "Transaction [dateBorrow=" + dateBorrow + ", dateReturn=" + dateReturn + ", borrower=" + borrower
+                + ", bookBorrowed=" + bookBorrowed + "]";
     }
     
     

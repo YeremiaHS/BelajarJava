@@ -1,5 +1,6 @@
 package Library.services.transaction;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import Library.Exception.BadRequestException;
@@ -48,10 +49,10 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
         if (kembali <=0) {
             throw new BadRequestException("Input valid id");
         }
-        transactionDao.delete(kembali);
-        // String pengembalian = geTransactionById(kembali).toString();
-        // Transaction pengembalianBuku =  new Transaction(pengembalian);
-        // transactionDao.save(pengembalianBuku);
+        LocalDateTime dateNow = LocalDateTime.now();
+        Transaction dataTransaction = transactionDao.findById(kembali);
+        dataTransaction.setDateReturn(dateNow.toString());
+        transactionDao.update(kembali, dataTransaction);
         System.out.println("Return success!");
     }
 
