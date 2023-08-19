@@ -16,10 +16,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public void createBook(Book buku) {
        //validation
-       if (buku.getJudul() == " ") {
+       if (buku.getJudul().isEmpty()) {
             //throw exception
-            throw new BadRequestException("Title cannot be empty");
-       } else {
+            throw new BadRequestException("Field cannot be empty");
+       } if (buku.getPenerbit().isEmpty()) {
+            throw new BadRequestException("Field cannot be empty");
+       } if (buku.getPengarang().isEmpty()) {
+            throw new BadRequestException("Field cannot be empty");
+       }else {
         bookDao.save(buku);
         System.out.println("Book added");
        }
@@ -32,7 +36,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBookById(Integer id) {
-        if (id <=0) {
+        if (id <=0 || id > getAllBook().size() ) {
             throw new BadRequestException("Input valid id");
         }
         return bookDao.findById(id);

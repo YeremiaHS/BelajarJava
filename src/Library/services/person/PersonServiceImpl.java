@@ -16,9 +16,12 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void createPerson(Person person) {
         //validation
-        if (person.getUsername() == " ") {
+        if (person.getUsername().isEmpty()) {
             //exception
-            throw new BadRequestException("Username cannot be empty");
+            throw new BadRequestException("Field cannot be empty");
+        } if (person.getEmail().isEmpty()) {
+             //exception
+            throw new BadRequestException("FIeld cannot be empty");
         } else {
             personDao.save(person);
             System.out.println("User added");
@@ -32,8 +35,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getPersonById(Integer id) {
-        if (id <=0) {
-            throw new BadRequestException("Input valid id");
+        if (id <=0 || id > getAllPerson().size()) {
+            throw new BadRequestException("Input valid ID");
         }
         return personDao.findById(id);
     }

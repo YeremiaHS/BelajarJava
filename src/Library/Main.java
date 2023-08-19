@@ -38,16 +38,6 @@ public class Main {
         System.out.println("Input Pilihan: ");
     }
 
-    // private static void bookMenu(){
-    //     System.out.println("""
-    //             === BOOK MENU ===
-    //             1. Add Book
-    //             2. See All Book
-    //             3. Search Book
-    //             """);
-    //     System.out.println("Input Pilihan: ");
-    // }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Boolean ulang = true;
@@ -148,10 +138,9 @@ public class Main {
                         System.out.println("=== RENT BOOK ===");
                         System.out.println("Input ID borrower: ");
                         Integer borrower = Integer.valueOf(scanner.nextLine());
-                        System.out.println("Input ID Book: ");
+                        System.out.println("Input ID book borrowed: ");
                         Integer bookBorrowed = Integer.valueOf(scanner.nextLine());
                         
-                        //Transaction transaction = new Transaction(idBorrower, idBookBorrowed);
                         transactionService.createBorrow(borrower, bookBorrowed);
 
                         System.out.println(" ");
@@ -186,13 +175,13 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("Menu tidak tersedia!");
+                        System.out.println("Menu Does not Exist");
                         // mainMenu();
                         break;
                 }
 
                 while (true) {
-                    System.out.println("Ingin mengulang Program? (Y | N) ");
+                    System.out.println("Restart Program? (Y | N) ");
                     String again = scanner.nextLine();
                     if("Y".equalsIgnoreCase(again)) {
                         // mainMenu();
@@ -201,7 +190,7 @@ public class Main {
                         ulang = false;
                         break;
                     } else {
-                        System.out.println("Input salah");
+                        System.out.println("Input invalid!");
                         continue;
                     }
                 }

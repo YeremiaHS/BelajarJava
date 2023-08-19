@@ -13,7 +13,7 @@ public class Transaction {
     LocalDateTime dateNow = LocalDateTime.now();
     //String dateFormat = dateNow.format(formatter);
     private String dateBorrow = dateNow.format(formatter).toString();
-    private String dateReturn = dateNow.format(formatter).toString();
+    private String dateReturn = " Not returned";/*dateNow.format(formatter).toString();*/
     private String borrower;
     private String bookBorrowed; 
 
@@ -23,23 +23,11 @@ public class Transaction {
         this.bookBorrowed = bookBorrowed;
     }
 
-    public Transaction(String dateBorrow, String borrower, String bookBorrowed){
-        //this.dateReturn = dateReturn;
-        this.dateBorrow = dateBorrow;
-        this.borrower = borrower;
-        this.bookBorrowed = bookBorrowed;
-    }
-    
-    // public Transaction(String pengembalian){
-    //     this.dateReturn = dateReturn;
-    // }
-
-    // public LocalDate getDateNow() {
-    //     return dateNow;
-    // }
-
-    // public void setDateNow(LocalDate dateNow) {
-    //     this.dateNow = dateNow;
+    // public Transaction(String dateBorrow, String borrower, String bookBorrowed){
+    //     //this.dateReturn = dateReturn;
+    //     this.dateBorrow = dateBorrow;
+    //     this.borrower = borrower;
+    //     this.bookBorrowed = bookBorrowed;
     // }
 
     public String getDateBorrow() {
@@ -76,8 +64,8 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction [Date Borrow= " + dateBorrow + "| Date Return=" + dateReturn + "| Book Borrowed= " + borrower
-                + "| Borrower= " + bookBorrowed + "]";
+        return "Transaction [Date Borrow= " + dateBorrow + " | Date Return= " + dateReturn + " | Borrower= " + borrower
+                + " | Book Borrowed= " + bookBorrowed + "]";
     }
     
     

@@ -28,13 +28,13 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
 
     @Override
     public void createBorrow(Integer idBorrower, Integer idBookBorrowed ) {
-        if (idBorrower <= 0) {
+        if (idBorrower <= 0 || idBorrower > getAllPerson().size()) {
             throw new BadRequestException("ID Invalid");
-        } else if (idBookBorrowed <= 0) {
+        } if (idBookBorrowed <= 0 || idBookBorrowed > getAllBook().size()) {
             throw new BadRequestException("ID Invalid");
         }
-        String peminjam = getBookById(idBorrower).toString();
-        String bukuDipinjam = getPersonById(idBookBorrowed).toString();
+        String peminjam = getPersonById(idBorrower).toString();
+        String bukuDipinjam = getBookById(idBookBorrowed).toString();
         Transaction transaction = new Transaction(peminjam, bukuDipinjam);
         transactionDao.save(transaction);
         System.out.println("Borrow success!");
@@ -47,7 +47,7 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
 
     @Override
     public void createReturn(Integer kembali) {
-        if (kembali <=0) {
+        if (kembali <=0 || kembali > getAllTransactions().size()) {
             throw new BadRequestException("Input valid id");
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMM uuuu HH:mm");
@@ -72,8 +72,7 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
 
     @Override
     public List<Person> getAllPerson() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllPerson'");
+        return personDao.findAll();
     }
 
     @Override
@@ -89,8 +88,7 @@ public class TransactionServiceImpl implements TransactionService, BookService, 
 
     @Override
     public List<Book> getAllBook() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllBook'");
+        return bookDao.findAll();
     }
 
     @Override
