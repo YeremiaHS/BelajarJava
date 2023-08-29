@@ -58,7 +58,6 @@ public class Main {
             while (ulang) {
                 mainMenu();
                 pilih = Integer.valueOf(scanner.nextLine());
-                
                 switch(pilih){
                     case 1:
                     listMenu();
@@ -72,25 +71,39 @@ public class Main {
                         if("Kembali".equalsIgnoreCase(again)) {
                                 break;
                             } else if("Tambah".equalsIgnoreCase(again)){
-                                System.out.println("* Silakan input nomor makanan yang ingin dipesan: ");
-                                int pilihMenu = Integer.valueOf(scanner.nextLine());
-                                System.out.println("* Jumlah menu yang ingin dipesan: ");
-                                int pilihJumlah = Integer.valueOf(scanner.nextLine());
-                                orderService.createOrder(pilihMenu, pilihJumlah);
-                                System.out.println(" ");
-                                System.out.println("====== PESANAN ANDA =====");
-                                orderService.getAllOrders();
-                                break;
+                                try {
+                                    System.out.println("* Silakan input nomor makanan yang ingin dipesan: ");
+                                    int pilihMenu = Integer.valueOf(scanner.nextLine());
+                                    System.out.println("* Jumlah menu yang ingin dipesan: ");
+                                    int pilihJumlah = Integer.valueOf(scanner.nextLine());
+                                    orderService.createOrder(pilihMenu, pilihJumlah);
+                                    System.out.println(" ");
+                                    System.out.println("====== PESANAN ANDA =====");
+                                    orderService.getAllOrders();
+                                    break;
+                                } catch (Exception BadRequestException) {
+                                    System.out.println(" ");
+                                    System.out.println("Masukkan Valid ID");
+                                    System.out.println(" ");
+                                    continue;
+                                } 
                             } else if ("Ubah".equalsIgnoreCase(again)) {
-                                System.out.println("* Masukan nomor order yang ingin dirubah: ");
-                                int pilihUbah = Integer.valueOf(scanner.nextLine());
-                                System.out.println("* Masukan jumlah baru: ");
-                                int ubahJumlah = Integer.valueOf(scanner.nextLine());
-                                orderService.updateOrder(pilihUbah, ubahJumlah);
-                                System.out.println("");
-                                System.out.println("====== PESANAN ANDA =====");
-                                orderService.getAllOrders();
-                                break;
+                                try {
+                                    System.out.println("* Masukan nomor order yang ingin dirubah: ");
+                                    int pilihUbah = Integer.valueOf(scanner.nextLine());
+                                    System.out.println("* Masukan jumlah baru: ");
+                                    int ubahJumlah = Integer.valueOf(scanner.nextLine());
+                                    orderService.updateOrder(pilihUbah, ubahJumlah);
+                                    System.out.println("");
+                                    System.out.println("====== PESANAN ANDA =====");
+                                    orderService.getAllOrders();
+                                    break;
+                                } catch (Exception BadRequestException) {
+                                    System.out.println(" ");
+                                    System.out.println("Masukkan Valid ID");
+                                    System.out.println(" ");
+                                    continue;
+                                }
                             } else if ("kembali".equalsIgnoreCase(again)) {
                                 break;
                             }
@@ -99,13 +112,21 @@ public class Main {
                     break;
 
                     case 3:
+                    try {
                         System.out.println(" ");
                         System.out.println("====== PESANANMU ====");
                         orderService.getAllOrders();
                         System.out.println("Cash: ");
                         Integer bayar = Integer.valueOf(scanner.nextLine());
                         paymentService.getReceipt(bayar);
-                    break;
+                        break;
+                    } catch (Exception BadRequestException) {
+                        System.out.println(" ");
+                        System.out.println("Uang anda kurang!");
+                        System.out.println(" ");
+                        continue;
+                    }
+                      
                 }
                 while (true) {
                     System.out.println(" ");
@@ -126,4 +147,5 @@ public class Main {
             scanner.close();
         }
     }
+
 }

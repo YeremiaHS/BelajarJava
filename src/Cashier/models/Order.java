@@ -51,7 +51,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "[" + menu + "] Jumlah: " + jumlah + " x " + harga + " = " + total + " ";
+        return "[" + menu + "] \n Jumlah: " + jumlah + " x Rp " + harga + " = Rp " + total + " ";
     }
 
 }

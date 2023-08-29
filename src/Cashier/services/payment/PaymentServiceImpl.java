@@ -37,11 +37,13 @@ public class PaymentServiceImpl implements PaymentService{
         if (bayar < hargaAkhir) {
             throw new BadRequestException("Uang Kurang");
         }
-        System.out.println("Total harga: " + totalHarga);
-        System.out.println("PPN: " + ppn);
-        System.out.println("Harga setelah PPN: " + hargaAkhir);
-        System.out.println("Uang Tunai: " + bayar);
-        System.out.println("Kembalian: " + (bayar - hargaAkhir));
+        System.out.println(" ");
+        System.out.println("Total harga: Rp " + totalHarga);
+        System.out.println("PPN: Rp " + ppn);
+        System.out.println("Harga setelah PPN: Rp " + hargaAkhir);
+        System.out.println("Uang Tunai: Rp " + bayar);
+        System.out.println("Kembalian: Rp " + (bayar - hargaAkhir));
+        System.out.println(" ");
         System.out.println("Terima kasih atas pembeliannya");
     }
     

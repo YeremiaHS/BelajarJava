@@ -21,6 +21,8 @@ public class OrderServiceImpl implements OrderService{
     public void createOrder(Integer idMenu, Integer jumlah) {
         if (idMenu <= 0 || idMenu > menuDao.findAll().size()) {
             throw new BadRequestException("Input Valid Menu");
+        } else if (jumlah <= 0) {
+            throw new BadRequestException("Input Valid Number");
         }
         Menu menu = menuDao.findById(idMenu);
         Double harga = menu.getHarga();
@@ -41,19 +43,20 @@ public class OrderServiceImpl implements OrderService{
         Double ppn = totalHarga * 0.11;
         Double hargaAkhir = totalHarga + ppn;
         System.out.println(" ");
-        System.out.println("Total harga: " + totalHarga);
-        System.out.println("PPN: " + ppn);
-        System.out.println("Harga setelah PPN: " + hargaAkhir);
+        System.out.println("Total harga: Rp " + totalHarga);
+        System.out.println("PPN: Rp " + ppn);
+        System.out.println("Harga setelah PPN: Rp " + hargaAkhir);
     }
 
     @Override
     public void updateOrder(Integer idOrder, Integer jumlahUpdate) {
         if (idOrder <= 0 || idOrder > orderDao.findAll().size()) {
             throw new BadRequestException("Input Valid Menu");
+        } else if (jumlahUpdate <= 0) {
+            throw new BadRequestException("Input Valid Number");
         }
         Order menuUpdate = orderDao.findById(idOrder);
         menuUpdate.setJumlah(jumlahUpdate);
-        menuUpdate.setHarga(menuUpdate.getHarga());
         menuUpdate.setTotal(jumlahUpdate * menuUpdate.getHarga());
         orderDao.update(idOrder, menuUpdate);
         System.out.println("Update Berhasil!");
